@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Latent Action Diffusion is a framework for cross-embodiment policy learning.">
+    <meta name="keywords" content="Diffusion Policy, Imitation Learning, Cross-Embodiment">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Latent Action Diffusion for Cross-Embodiment Manipulation</title>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">Latent Action Diffusion for Cross-Embodiment
+                            Manipulation</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://erikbr01.github.io/">Erik Bauer</a><sup>1,2</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://www.elvisnava.com/">Elvis Nava</a><sup>1,2,3,4</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://robert.katzschmann.de/">Robert K. Katzschmann</a><sup>2,1,3</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>mimic robotics</span>&emsp;
+                            <span class="author-block"><sup>2</sup>Soft Robotics Lab, ETH Zurich</span>&emsp;
+                            <span class="author-block"><sup>3</sup>ETH AI Center</span>&emsp;
+                            <span class="author-block"><sup>4</sup>INI, ETH Zurich</span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <!-- <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2011.12948"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span> -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2506.14608"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <!-- Video Link. -->
+                                <span class="link-block">
+                                    <a href="https://youtu.be/_apQedBZuJY"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/srl-ethz/robot_clip"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <video poster="" id="mimic_one_embed" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/latent_action_diffusion_compressed.mp4" type="video/mp4">
+                </video>
+                <!-- <h2 class="subtitle has-text-centered">
+                    Video -->
+
+                <!-- Our system features a newly designed 16-DoF tendon-driven hand, a 7-DoF Franka Emika Panda robot arm, and a
+            VR teleoperation system for data collection. We showcase the framework across difficult, dynamic real-world
+            manipulation scenarios, which highlight the system's high frequency fine-motor skills, visual generalization,
+            and ability to recover from failures. -->
+                <!-- </h2> -->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        End-to-end learning approaches offer great potential for robotic manipulation, but their impact
+                        is constrained by data
+                        scarcity and heterogeneity across different embodiments. In particular, diverse action spaces
+                        across different
+                        end-effectors create barriers for cross-embodiment learning and skill transfer. We address this
+                        challenge through
+                        diffusion policies in a latent action space that unifies diverse end-effector actions. We first
+                        show that we can learn a
+                        semantically aligned latent action space for anthropomorphic robotic hands, a human hand, and a
+                        parallel jaw gripper
+                        using encoders trained with a contrastive loss. Secondly, we show that by using our proposed
+                        latent action space for
+                        co-training on manipulation data from different end-effectors, we can utilize a single policy
+                        for multi-robot control
+                        and obtain up to 13% improved manipulation success rates, indicating successful skill transfer
+                        despite a significant
+                        embodiment gap. Our approach using latent cross-embodiment policies presents a new method to
+                        unify different action
+                        spaces across embodiments, enabling efficient multi-robot control and data sharing across robot
+                        setups. This
+                        significantly reduces the need for extensive data collection for each new robot morphology,
+                        accelerates generalization
+                        across embodiments, and ultimately facilitates more scalable and efficient robotic learning.
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+
+            <!-- Paper video. -->
+            <!-- <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Video</h2>
+                    <div class="publication-video">
+                        <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div> -->
+            <!--/ Paper video. -->
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <img src="./static/images/title.svg">
+                <h2 class="subtitle has-text-centered">
+                    Latent Action Diffusion enables multi-robot control and cross-embodiment skill transfer via a
+                    learned latent action space.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <div class="columns is-centered">
+
+                <!-- Visual Effects. -->
+                <div class="column">
+                    <div class="content">
+                        <h2 class="title is-3">Generating action space data</h2>
+                        <p>
+                            Using retargeting, we generate cross-modal correspondences in between different action
+                            spaces.<br>
+                        </p>
+                        <img src="./static/images/data_generation.svg">
+
+                    </div>
+                </div>
+                <!--/ Visual Effects. -->
+
+                <!-- Matting. -->
+                <div class="column">
+                    <h2 class="title is-3">Encoder training</h2>
+                    <div class="columns is-centered">
+                        <div class="column content">
+                            <p>
+                                To learn latent actions, we utilize a pairwise contrastive loss to
+                                maintain the alignment of inputs in the latent space.
+                            </p>
+                            <img src="./static/images/encoder_training.svg">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--/ Matting. -->
+
+            <div class="columns is-centered">
+
+                <!-- Visual Effects. -->
+                <div class="column">
+                    <div class="content">
+                        <h2 class="title is-3">Training decoders</h2>
+                        <p>
+                            We train decoders for each modality to reconstruct ground truth end-effector poses from the
+                            encoded latents.
+                        </p>
+                        <img src="./static/images/encoder_decoder_training.svg">
+                    </div>
+                </div>
+                <!--/ Visual Effects. -->
+
+                <!-- Matting. -->
+                <div class="column">
+                    <h2 class="title is-3">Policy learning</h2>
+                    <div class="columns is-centered">
+                        <div class="column content">
+                            <p>
+                                We learn latent cross-embodiment policies. For inference, we utilize the
+                                embodiment-specific decoders.
+                            </p>
+                            <img src="./static/images/policy_learning.svg">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--/ Matting. -->
+
+            <!-- Animation. -->
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Results</h2>
+
+                    <!-- Interpolating. -->
+                    <h3 class="title is-4">Latent Action Space</h3>
+                    <div class="content has-text-justified">
+                        <p>
+                            We demonstrate our method for learning latent action space by
+                            encoding parallel gripper actions from 0 to 1 and decoding them to actions for the Faive
+                            hand and human hand.
+                        </p>
+                        <img src="./static/images/latent_action_space_viz.svg">
+                    </div>
+                    <br />
+                    <!--/ Interpolating. -->
+
+                    <!-- Re-rendering. -->
+                    <h3 class="title is-4">Pick and Place with Faive Hand + Franka Gripper</h3>
+
+                    <div class="columns is-centered">
+
+                        <!-- Visual Effects. -->
+                        <div class="column">
+                            <div class="content">
+                                <h4 class="title is-4">Rollouts</h4>
+                                <p>
+                                    We roll out single-embodiment policies trained with explicit actions and latent
+                                    actions for both embodiments. The policies were trained with 100 demonstrations for
+                                    each embodiment, respectively.
+                                    The cross-embodiment policy was co-trained on 100 episodes of data from both
+                                    embodiments with our proposed methodology. As observation, we use the same external
+                                    camera for both embodiments.
+                                </p>
+                                <video id="dollyzoom" class="mt-3" autoplay controls muted loop playsinline
+                                    height="100%">
+                                    <source src="./static/videos/faive_franka_rollouts_only.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                        <!--/ Visual Effects. -->
+
+                        <!-- Matting. -->
+                        <div class="column">
+                            <h4 class="title is-4">Success rates</h4>
+                            <div class="columns is-centered">
+                                <div class="column content">
+                                    <p>
+                                        With the cross-embodiment policy, we can control both end-effectors with a
+                                        single policy. Additionally, we observe that it exhibits
+                                        improved manipulation skills: the cotrained policy improves upon the task completion rates of the diffusion policy baseline
+                                        over 10% and 7.5% for the Faive hand and Franka gripper, respectively.
+                                    </p>
+                                    <img src="./static/images/success_rates_faive_franka.svg">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Animation. -->
+
+                    <!-- Re-rendering. -->
+                    <h3 class="title is-4">Pick and Place with mimic Hand + Franka Gripper</h3>
+
+                    <div class="columns is-centered">
+
+                        <!-- Visual Effects. -->
+                        <div class="column">
+                            <div class="content">
+                                <h4 class="title is-4">Rollouts</h4>
+                                <p>
+                                    The policies were trained with 250 demonstrations for
+                                    each embodiment, respectively. The cross-embodiment policy was trained on all 500
+                                    episodes. As observations, we use an external
+                                    camera and the arm pose. Furthermore, for the mimic hand, we use a wrist camera,
+                                    which is replaced by zero-padding for the Franka gripper.
+                                </p>
+                                <video id="dollyzoom" class="mt-3" autoplay controls muted loop playsinline
+                                    height="100%">
+                                    <source src="./static/videos/mimic_franka_rollouts_only.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                        <!--/ Visual Effects. -->
+
+                        <!-- Matting. -->
+                        <div class="column">
+                            <h4 class="title is-4">Success rates</h4>
+                            <div class="columns is-centered">
+                                <div class="column content">
+                                    <p>
+                                        For the mimic hand, the cross-embodiment policy outperforms single-embodiment
+                                        baselines by 13%. For the Franka gripper, the performance decreases with the
+                                        cotrained
+                                        policy - we attribute this to the asymmetric observations. This observation is
+                                        consistent with prior work cotraining on data with missing camera views.
+                                    </p>
+                                    <img src="./static/images/success_rates_mimic_franka.svg">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Animation. -->
+
+                    <h3 class="title is-4">Block Stacking with mimic Hand + Franka Gripper</h3>
+
+                                        <div class="columns is-centered">
+
+                                            <!-- Visual Effects. -->
+                                            <div class="column">
+                                                <div class="content">
+                                                    <h4 class="title is-4">Rollouts</h4>
+                                                    <p>
+                                                        This task contains 3 subtasks: picking up the first block, alignment and stacking with the second block and placing both in the box. The policies were trained with 200 demonstrations for
+                                                        each embodiment, respectively. The cross-embodiment policy was trained on all 400
+                                                        episodes. As observations, we only use an external
+                                                        camera and the arm pose.
+                                                    </p>
+                                                    <video id="dollyzoom" class="mt-3" autoplay controls muted loop playsinline
+                                                        height="100%">
+                                                        <source src="./static/videos/mimic_franka_block_stacking_rollouts_only.mp4" type="video/mp4">
+                                                    </video>
+                                                </div>
+                                            </div>
+                                            <!--/ Visual Effects. -->
+
+                                            <!-- Matting. -->
+                                            <div class="column">
+                                                <h4 class="title is-4">Success rates</h4>
+                                                <div class="columns is-centered">
+                                                    <div class="column content">
+                                                        <p>
+                                                            For coarse manipulation skills, we see a significant improvement for the cross-embodied policy for both embodiments. For fine-grained manipulation, success rates for the mimic hand
+                                                            do not change much, likely due to self-occlusion in the workspace camera view. For the Franka gripper, the success rates are drastically improved for the cross-embodied policy.
+                                                        </p>
+                                                        <img src="./static/images/success_rates_mimic_franka_block_stacking.svg">
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                </div>
+    </section>
+
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+<pre><code>@article{bauer2025lad,
+  author    = {Erik Bauer and Elvis Nava and Robert K. Katzschmann},
+  title     = {Latent Action Diffusion for Cross-Embodiment Manipulation},
+  journal   = {2026 IEEE International Conference on Robotics and Automation (ICRA)},
+  year      = {2026},
+}</code></pre>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <!-- <div class="content has-text-centered">
+                <a class="icon-link" href="./static/videos/nerfies_paper.pdf">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                <a class="icon-link" href="https://github.com/srl_ethz" class="external-link" disabled>
+                    <i class="fab fa-github"></i>
+                </a>
+            </div> -->
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This website is licensed under a <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                        <p>
+                            This website was built with the <a
+                                href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> template.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
