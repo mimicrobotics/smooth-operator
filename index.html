@@ -196,68 +196,34 @@
 
             <div class="columns is-centered">
 
-                <!-- Visual Effects. -->
+                <!-- Analysis using Retargeting Heuristics -->
                 <div class="column">
                     <div class="content">
-                        <h2 class="title is-3">Generating action space data</h2>
+                        <h2 class="title is-3">Analysis using Retargeting Heuristics</h2>
                         <p>
-                            Using retargeting, we generate cross-modal correspondences in between different action
-                            spaces.<br>
+                            We analyzed the theoretical performance of our algorithm using retargeting heuristics.
+                            <br>
                         </p>
-                        <img src="./static/images/data_generation.svg">
+                        <img src="./static/images/heuristics.png">
 
                     </div>
                 </div>
-                <!--/ Visual Effects. -->
+                <!--/ Analysis using Retargeting Heuristics -->
 
-                <!-- Matting. -->
-                <div class="column">
-                    <h2 class="title is-3">Encoder training</h2>
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <p>
-                                To learn latent actions, we utilize a pairwise contrastive loss to
-                                maintain the alignment of inputs in the latent space.
-                            </p>
-                            <img src="./static/images/encoder_training.svg">
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!--/ Matting. -->
-
-            <div class="columns is-centered">
-
-                <!-- Visual Effects. -->
+                <!-- Balanced Latin Square. -->
                 <div class="column">
                     <div class="content">
-                        <h2 class="title is-3">Training decoders</h2>
+                        <h2 class="title is-3">Balanced Latin Square</h2>
                         <p>
-                            We train decoders for each modality to reconstruct ground truth end-effector poses from the
-                            encoded latents.
+                            Because of the learning effects, statistical independence assumptions do not hold. To mitigate this, we used a 
+                            Balanced Latin Sqaure design to create groups. An operator is randomly added to a group per task. 
+                            <br>
                         </p>
-                        <img src="./static/images/encoder_decoder_training.svg">
+                        <img src="./static/images/balanced_latin_squares.png">
                     </div>
                 </div>
-                <!--/ Visual Effects. -->
-
-                <!-- Matting. -->
-                <div class="column">
-                    <h2 class="title is-3">Policy learning</h2>
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <p>
-                                We learn latent cross-embodiment policies. For inference, we utilize the
-                                embodiment-specific decoders.
-                            </p>
-                            <img src="./static/images/policy_learning.svg">
-                        </div>
-
-                    </div>
-                </div>
+                <!--/ Balanced Latin Square. -->
             </div>
-            <!--/ Matting. -->
 
             <!-- Animation. -->
             <div class="columns is-centered">
