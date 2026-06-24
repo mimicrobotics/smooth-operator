@@ -144,10 +144,10 @@
                         Based Retargeter (SBR), a novel gradient-free optimization method drawn from
                         the rich literature of sampling-based control and explicitly designed for low-jitter,
                         real-time kinematic retargeting. We validate SBR’s utility both in simulation
-                        and through a rigorous real-world user study involving 18 participants perform-
-                        ing 3 complex manipulation tasks. Compared to gradient-based baselines, SBR
-                        achieved the highest overall task success rate (54.1%) while significantly reduc-
-                        ing operator cognitive fatigue, recording the lowest NASA-TLX workload score
+                        and through a rigorous real-world user study involving 18 participants performing 3 complex 
+                        manipulation tasks. Compared to gradient-based baselines, SBR
+                        achieved the highest overall task success rate (54.1%) while significantly reducing 
+                        operator cognitive fatigue, recording the lowest NASA-TLX workload score
                         (36.4 out of 100). Ultimately, our findings establish SBR as a highly effective, in-
                         tuitive controller for dexterous manipulation while providing the community with
                         a rigorous benchmarking methodology to guide future retargeting research.
@@ -155,18 +155,6 @@
                 </div>
             </div>
             <!--/ Abstract. -->
-
-            <!-- Paper video. -->
-            <!-- <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Video</h2>
-                    <div class="publication-video">
-                        <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" frameborder="0"
-                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div> -->
-            <!--/ Paper video. -->
         </div>
     </section>
 
@@ -181,6 +169,27 @@
         </div>
     </section>
 
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">System Overview</h2>
+                        <div class="content has-text-justified">
+                            <p>
+                                Utilizing the Kabsch-Umeyama point cloud algorithm to align the inputs, we are able to have 
+                                multiple operators use it to control the robot hand without any significant fine-tuning. The 
+                                algorithm utilizes the weighing approach that is used in Model Path Predictive Integral (MPPI). 
+                                Building upon this, it is synthesized with Model Path Optimal Path Integral (MPOPI) with the 
+                                Improved Cross-Entropy Method (iCEM) being used for the Adaptive Importance Sampling (AIS) method.
+                            </p>
+                            <video poster="" id="smooth_operator_system_overview" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/videos/system_overview.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="section">
         <div class="container is-max-desktop">
@@ -299,6 +308,8 @@
                     <br />
                     <!--/ Real-World Experiments: Overall Workload (NASA  -->
                 </div>
+            </div>
+            <!--/ Animation. -->
     </section>
 
 
