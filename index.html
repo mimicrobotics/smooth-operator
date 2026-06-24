@@ -191,40 +191,44 @@
         </div>
     </section>
 
+    <!-- Paper methodology highlights  -->
     <section class="section">
         <div class="container is-max-desktop">
 
             <div class="columns is-centered">
 
                 <!-- Analysis using Retargeting Heuristics -->
-                <div class="column">
-                    <div class="content">
-                        <h2 class="title is-3">Analysis using Retargeting Heuristics</h2>
+                <div class="column" style="display: flex; flex-direction: column;">
+                    <div class="content" style="display: flex; flex-direction: column; flex: 1;">
+                        <h2 class="title is-3">Retargeting Heuristics</h2>
                         <p>
-                            We analyzed the theoretical performance of our algorithm using retargeting heuristics.
-                            <br>
+                            We analyzed the theoretical performance of our algorithm using retargeting heuristics, tested
+                            across 14 different operators' hand motion recordings.
                         </p>
-                        <img src="./static/images/heuristics.png">
-
+                        <div style="flex: 1; display: flex; align-items: center;">
+                            <img src="./static/images/heuristics.png" style="width: 100%; height: 280px; object-fit: contain;">
+                        </div>
                     </div>
                 </div>
                 <!--/ Analysis using Retargeting Heuristics -->
 
                 <!-- Balanced Latin Square. -->
-                <div class="column">
-                    <div class="content">
-                        <h2 class="title is-3">Balanced Latin Square</h2>
+                <div class="column" style="display: flex; flex-direction: column;">
+                    <div class="content" style="display: flex; flex-direction: column; flex: 1;">
+                        <h2 class="title is-3">Balanced Latin Square Design</h2>
                         <p>
-                            Because of the learning effects, statistical independence assumptions do not hold. To mitigate this, we used a 
-                            Balanced Latin Sqaure design to create groups. An operator is randomly added to a group per task. 
-                            <br>
+                            Due to learning effects, statistical independence assumptions do not hold. We used a
+                            Balanced Latin Square design to assign operators to groups, controlling for ordering bias.
                         </p>
-                        <img src="./static/images/balanced_latin_squares.png">
+                        <div style="flex: 1; display: flex; align-items: center;">
+                            <img src="./static/images/balanced_latin_squares.png" style="width: 100%; height: 280px; object-fit: contain;">
+                        </div>
                     </div>
                 </div>
                 <!--/ Balanced Latin Square. -->
             </div>
     </section>
+    <!-- Paper methodology highlights  -->
 
     <section class="section">
         <div class="container is-max-desktop">
