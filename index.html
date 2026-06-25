@@ -291,7 +291,9 @@
                     <h3 class="title is-4">Success Rate</h3>
                     <div class="content has-text-justified">
                         <p>
-                            SBR achieves the highest overall task success rate of 54.1%.
+                            SBR achieves the highest overall task success rate of 54.1%. This outperforms DexPilot (44.0%) and GeoRT (26.6%) and slightly surpasses Hybrid (52.1%). The performance
+                            gap between SBR and the other methods is most pronounced in Task A (which represents a general manipulation task that most operators perform), where SBR achieves a 
+                            success rate of 70.9%, compared to DexPilot (55.0%), Hybrid (58.3%), and GeoRT (33.3%). These results highlight the effectiveness of SBR in real-world teleoperation scenarios.
                         </p>
                         <img src="./static/images/results_plot-task-success-rate.svg" style="display: block; margin: 0 auto; width: 85%;">
                     </div>
@@ -302,7 +304,10 @@
                     <h3 class="title is-4">Completion Time</h3>
                     <div class="content has-text-justified">
                         <p>
-                            Compared to the completion times of DexPilot (23.3s) and Hybrid (21.6s), SBR has a higher overall completion time of 29.7s. However, it is still faster than GeoRT (33.3s).
+                            Compared to the completion times of DexPilot (23.3s) and Hybrid (21.6s), SBR has a higher overall completion time of 29.7s. 
+                            However, it is still faster than GeoRT (33.3s). This can be attributed to the differences in how operators perform the tasks, 
+                            with some operators aiming to perform the task faster than others. Additionally, from the chart, we can also see that this is 
+                            attributed to Task B, where operators can continue to perform the task given that they did not drop the cube from the palm.
                         </p>
                         <img src="./static/images/results_plot-task-completion-time.svg" style="display: block; margin: 0 auto; width: 85%;">
                     </div>
@@ -313,7 +318,9 @@
                     <h3 class="title is-4">Overall Workload (NASA TLX)</h3>
                     <div class="content has-text-justified">
                         <p>
-                            SBR achieves the lowest NASA-TLX workload score of 36.4 out of 100.
+                            SBR achieves the lowest NASA-TLX workload score of 36.4 out of 100. This indicates that the workload is lower 
+                            compared to the other methods, which have higher scores: DexPilot (44.0), Hybrid (38.4), and GeoRT (56.4). This 
+                            highlights the usability and intuitiveness of SBR. 
                         </p>
                         <img src="./static/images/results_plot-nasa-tlx-results_combined.svg" style="display: block; margin: 0 auto; width: 100%;">
                     </div>
