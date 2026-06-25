@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Latent Action Diffusion is a framework for cross-embodiment policy learning.">
-    <meta name="keywords" content="Diffusion Policy, Imitation Learning, Cross-Embodiment">
+    <meta name="description" content="Smooth Operator is a real-time sampling-based algorithm for kinematic hand retargeting.">
+    <meta name="keywords" content="Robot Manipulation, Teleoperation, Dexterous Manipulation">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Latent Action Diffusion for Cross-Embodiment Manipulation</title>
+    <title>Smooth Operator: A Real-Time Sampling-Based Algorithm for Kinematic Hand Retargeting</title>
 
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
@@ -34,23 +34,29 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">Latent Action Diffusion for Cross-Embodiment
-                            Manipulation</h1>
+                        <h1 class="title is-1 publication-title">Smooth Operator: A Real-Time Sampling-Based Algorithm for Kinematic Hand Retargeting</h1>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
-                                <a href="https://erikbr01.github.io/">Erik Bauer</a><sup>1,2</sup>,</span>
+                                <a href="https://linkedin.com/in/robjmal">Robert Jomar Malate</a><sup>1,3</sup>,</span>
                             <span class="author-block">
-                                <a href="https://www.elvisnava.com/">Elvis Nava</a><sup>1,2,3,4</sup>,</span>
+                                <a href="https://erikbr01.github.io/">Erik Bauer</a><sup>2</sup>,</span>
                             <span class="author-block">
-                                <a href="https://robert.katzschmann.de/">Robert K. Katzschmann</a><sup>2,1,3</sup>
+                                <a href="https://ch.linkedin.com/in/norica-bacuieti-145274199">Norica Bacuieti</a><sup>3</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://scharalambous3.github.io/">Stefanos Charalambous</a><sup>3</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://www.elvisnava.com/">Elvis Nava</a><sup>3</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://robert.katzschmann.de/">Robert K. Katzschmann</a><sup>1,3</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://ch.linkedin.com/in/benedek-forrai">Benedek Forrai</a><sup>3</sup>
                             </span>
                         </div>
 
                         <div class="is-size-5 publication-authors">
-                            <span class="author-block"><sup>1</sup>mimic robotics</span>&emsp;
-                            <span class="author-block"><sup>2</sup>Soft Robotics Lab, ETH Zurich</span>&emsp;
-                            <span class="author-block"><sup>3</sup>ETH AI Center</span>&emsp;
-                            <span class="author-block"><sup>4</sup>INI, ETH Zurich</span>
+                            <span class="author-block"><sup>1</sup>Soft Robotics Lab, ETH Zurich</span>&emsp;
+                            <span class="author-block"><sup>2</sup>Stanford University</span>&emsp;
+                            <span class="author-block"><sup>3</sup>mimic robotics</span>&emsp;
                         </div>
 
                         <div class="column has-text-centered">
@@ -107,7 +113,7 @@
         <div class="container is-max-desktop">
             <div class="hero-body">
                 <video poster="" id="mimic_one_embed" autoplay controls muted loop playsinline height="100%">
-                    <source src="./static/videos/latent_action_diffusion_compressed.mp4" type="video/mp4">
+                    <source src="./static/videos/main-video_smooth-operator.mp4" type="video/mp4">
                 </video>
                 <!-- <h2 class="subtitle has-text-centered">
                     Video -->
@@ -129,285 +135,211 @@
                 <div class="column is-four-fifths">
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
-                        End-to-end learning approaches offer great potential for robotic manipulation, but their impact
-                        is constrained by data
-                        scarcity and heterogeneity across different embodiments. In particular, diverse action spaces
-                        across different
-                        end-effectors create barriers for cross-embodiment learning and skill transfer. We address this
-                        challenge through
-                        diffusion policies in a latent action space that unifies diverse end-effector actions. We first
-                        show that we can learn a
-                        semantically aligned latent action space for anthropomorphic robotic hands, a human hand, and a
-                        parallel jaw gripper
-                        using encoders trained with a contrastive loss. Secondly, we show that by using our proposed
-                        latent action space for
-                        co-training on manipulation data from different end-effectors, we can utilize a single policy
-                        for multi-robot control
-                        and obtain up to 13% improved manipulation success rates, indicating successful skill transfer
-                        despite a significant
-                        embodiment gap. Our approach using latent cross-embodiment policies presents a new method to
-                        unify different action
-                        spaces across embodiments, enabling efficient multi-robot control and data sharing across robot
-                        setups. This
-                        significantly reduces the need for extensive data collection for each new robot morphology,
-                        accelerates generalization
-                        across embodiments, and ultimately facilitates more scalable and efficient robotic learning.
+                        Advances in learning-based robotic manipulation, such as Vision-
+                        Language-Action (VLA) models and Video Action Models (VAMs), heavily rely
+                        on high-quality teleoperation data. Their capabilities are strictly upper-bounded
+                        by the quality of the underlying human demonstrations. Current gradient-based
+                        retargeting algorithms converge to local minima, resulting in jitter that affects data
+                        quality and teleoperation experience. To address this, we introduce the Sampling-
+                        Based Retargeter (SBR), a novel gradient-free optimization method drawn from
+                        the rich literature of sampling-based control and explicitly designed for low-jitter,
+                        real-time kinematic retargeting. We validate SBR’s utility both in simulation
+                        and through a rigorous real-world user study involving 18 participants performing 3 complex 
+                        manipulation tasks. Compared to gradient-based baselines, SBR
+                        achieved the highest overall task success rate (54.1%) while significantly reducing 
+                        operator cognitive fatigue, recording the lowest NASA-TLX workload score
+                        (36.4 out of 100). Ultimately, our findings establish SBR as a highly effective, in-
+                        tuitive controller for dexterous manipulation while providing the community with
+                        a rigorous benchmarking methodology to guide future retargeting research.
                     </div>
                 </div>
             </div>
             <!--/ Abstract. -->
-
-            <!-- Paper video. -->
-            <!-- <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Video</h2>
-                    <div class="publication-video">
-                        <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" frameborder="0"
-                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div> -->
-            <!--/ Paper video. -->
         </div>
     </section>
 
     <section class="hero teaser">
         <div class="container is-max-desktop">
             <div class="hero-body">
-                <img src="./static/images/title.svg">
+                <img src="./static/images/fig_main.png" alt="Main Figure" />
                 <h2 class="subtitle has-text-centered">
-                    Latent Action Diffusion enables multi-robot control and cross-embodiment skill transfer via a
-                    learned latent action space.
+                    Our sampling-based retargeter (SBR) enables low-jitter, real-time kinematic retargeting for teleoperation and data collection.
                 </h2>
             </div>
         </div>
     </section>
 
+    <!-- System Overview -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">System Overview</h2>
+                        <div class="content has-text-justified">
+                            <p>
+                                Utilizing the Kabsch-Umeyama algorithm to align the input human hand point cloud with the robot hand, we 
+                                are able to have multiple operators use it to control the robot hand without any significant fine-tuning. The 
+                                algorithm utilizes the weighing approach that is used in Model Path Predictive Integral (MPPI). 
+                                Building upon this, it is synthesized with Model Path Optimal Path Integral (MPOPI) with the 
+                                Improved Cross-Entropy Method (iCEM) being used for the Adaptive Importance Sampling (AIS) method.
+                            </p>
+                            <video poster="" id="smooth_operator_system_overview" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/videos/system_overview.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- System Overview -->
 
+    <!-- Paper methodology highlights  -->
     <section class="section">
         <div class="container is-max-desktop">
 
             <div class="columns is-centered">
 
-                <!-- Visual Effects. -->
-                <div class="column">
-                    <div class="content">
-                        <h2 class="title is-3">Generating action space data</h2>
+                <!-- Analysis using Retargeting Heuristics -->
+                <div class="column" style="display: flex; flex-direction: column;">
+                    <div class="content" style="display: flex; flex-direction: column; flex: 1;">
+                        <h2 class="title is-3">Retargeting Heuristics</h2>
                         <p>
-                            Using retargeting, we generate cross-modal correspondences in between different action
-                            spaces.<br>
+                            We analyzed the theoretical performance of our algorithm using retargeting heuristics, tested
+                            across 14 different operators' hand motion recordings.
                         </p>
-                        <img src="./static/images/data_generation.svg">
-
-                    </div>
-                </div>
-                <!--/ Visual Effects. -->
-
-                <!-- Matting. -->
-                <div class="column">
-                    <h2 class="title is-3">Encoder training</h2>
-                    <div class="columns is-centered">
-                        <div class="column content">
-                            <p>
-                                To learn latent actions, we utilize a pairwise contrastive loss to
-                                maintain the alignment of inputs in the latent space.
-                            </p>
-                            <img src="./static/images/encoder_training.svg">
+                        <div style="flex: 1; display: flex; align-items: center;">
+                            <img src="./static/images/heuristics.png" style="width: 100%; height: 280px; object-fit: contain;">
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <!--/ Matting. -->
+                <!--/ Analysis using Retargeting Heuristics -->
 
+                <!-- Balanced Latin Square. -->
+                <div class="column" style="display: flex; flex-direction: column;">
+                    <div class="content" style="display: flex; flex-direction: column; flex: 1;">
+                        <h2 class="title is-3">Balanced Latin Square Design</h2>
+                        <p>
+                            Due to learning effects, statistical independence assumptions do not hold. We used a
+                            Balanced Latin Square design to assign operators to groups, controlling for ordering bias.
+                        </p>
+                        <div style="flex: 1; display: flex; align-items: center;">
+                            <img src="./static/images/balanced_latin_squares.png" style="width: 100%; height: 280px; object-fit: contain;">
+                        </div>
+                    </div>
+                </div>
+                <!--/ Balanced Latin Square. -->
+            </div>
+    </section>
+    <!-- Paper methodology highlights  -->
+
+    <!-- Real-World Experiment Tasks -->
+    <section class="section">
+        <div class="container is-max-desktop">
             <div class="columns is-centered">
-
-                <!-- Visual Effects. -->
-                <div class="column">
-                    <div class="content">
-                        <h2 class="title is-3">Training decoders</h2>
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Real-World Tasks</h2>
+                    <div class="content has-text-justified">
                         <p>
-                            We train decoders for each modality to reconstruct ground truth end-effector poses from the
-                            encoded latents.
+                            We evaluated our algorithm on 3 complex dexterous manipulation tasks, each designed to challenge different aspects of hand retargeting.
+                            This was tested with a total of 18 participants, their experiences ranging from complete novices to expert teleoperators.
                         </p>
-                        <img src="./static/images/encoder_decoder_training.svg">
                     </div>
-                </div>
-                <!--/ Visual Effects. -->
-
-                <!-- Matting. -->
-                <div class="column">
-                    <h2 class="title is-3">Policy learning</h2>
                     <div class="columns is-centered">
-                        <div class="column content">
-                            <p>
-                                We learn latent cross-embodiment policies. For inference, we utilize the
-                                embodiment-specific decoders.
-                            </p>
-                            <img src="./static/images/policy_learning.svg">
+                        <div class="column has-text-centered">
+                            <video autoplay controls muted loop playsinline width="100%">
+                                <source src="./static/videos/real-world-exp_task-pickup-card_demo-000.mp4" type="video/mp4">
+                            </video>
+                            <p class="has-text-weight-semibold mt-2">Card Pickup (Task A)</p>
                         </div>
-
+                        <div class="column has-text-centered">
+                            <video autoplay controls muted loop playsinline width="100%">
+                                <source src="./static/videos/real-world-exp_task-cube-rot-v_demo-000.mp4" type="video/mp4">
+                            </video>
+                            <p class="has-text-weight-semibold mt-2">Vertical Cube Rotation (Task B)</p>
+                        </div>
+                        <div class="column has-text-centered">
+                            <video autoplay controls muted loop playsinline width="100%">
+                                <source src="./static/videos/real-world-exp_task-screwdriver-pivot_demo-000.mp4" type="video/mp4">
+                            </video>
+                            <p class="has-text-weight-semibold mt-2">Screwdriver Pivot (Task C)</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--/ Matting. -->
+        </div>
+    </section>
+    <!-- Real-World Experiment Tasks -->
 
+    <!-- Results -->
+    <section class="section">
+        <div class="container is-max-desktop">
             <!-- Animation. -->
             <div class="columns is-centered">
                 <div class="column is-full-width">
                     <h2 class="title is-3">Results</h2>
 
-                    <!-- Interpolating. -->
-                    <h3 class="title is-4">Latent Action Space</h3>
+                    <!-- Offline Analysis -->
+                    <h3 class="title is-4">Offline Analysis</h3>
                     <div class="content has-text-justified">
                         <p>
-                            We demonstrate our method for learning latent action space by
-                            encoding parallel gripper actions from 0 to 1 and decoding them to actions for the Faive
-                            hand and human hand.
+                            In the simulation metrics, SBR achieves the highest Cosine Similarity and Consistency metrics, tested over a 14 different operators' hand recordings.
                         </p>
-                        <img src="./static/images/latent_action_space_viz.svg">
+                        <img src="./static/images/results_table-simulation-metrics.png" style="display: block; margin: 0 auto; width: 85%;">
                     </div>
                     <br />
-                    <!--/ Interpolating. -->
+                    <!--/ Offline Analysis -->
 
-                    <!-- Re-rendering. -->
-                    <h3 class="title is-4">Pick and Place with Faive Hand + Franka Gripper</h3>
-
-                    <div class="columns is-centered">
-
-                        <!-- Visual Effects. -->
-                        <div class="column">
-                            <div class="content">
-                                <h4 class="title is-4">Rollouts</h4>
-                                <p>
-                                    We roll out single-embodiment policies trained with explicit actions and latent
-                                    actions for both embodiments. The policies were trained with 100 demonstrations for
-                                    each embodiment, respectively.
-                                    The cross-embodiment policy was co-trained on 100 episodes of data from both
-                                    embodiments with our proposed methodology. As observation, we use the same external
-                                    camera for both embodiments.
-                                </p>
-                                <video id="dollyzoom" class="mt-3" autoplay controls muted loop playsinline
-                                    height="100%">
-                                    <source src="./static/videos/faive_franka_rollouts_only.mp4" type="video/mp4">
-                                </video>
-                            </div>
-                        </div>
-                        <!--/ Visual Effects. -->
-
-                        <!-- Matting. -->
-                        <div class="column">
-                            <h4 class="title is-4">Success rates</h4>
-                            <div class="columns is-centered">
-                                <div class="column content">
-                                    <p>
-                                        With the cross-embodiment policy, we can control both end-effectors with a
-                                        single policy. Additionally, we observe that it exhibits
-                                        improved manipulation skills: the cotrained policy improves upon the task completion rates of the diffusion policy baseline
-                                        over 10% and 7.5% for the Faive hand and Franka gripper, respectively.
-                                    </p>
-                                    <img src="./static/images/success_rates_faive_franka.svg">
-                                </div>
-
-                            </div>
-                        </div>
+                    <!-- Real-World Experiments: Success Rate -->
+                    <h3 class="title is-4">Success Rate</h3>
+                    <div class="content has-text-justified">
+                        <p>
+                            SBR achieves the highest overall task success rate of 54.1%. This outperforms DexPilot (44.0%) and GeoRT (26.6%) and slightly surpasses Hybrid (52.1%). The performance
+                            gap between SBR and the other methods is most pronounced in Task A (which represents a general manipulation task that most operators perform), where SBR achieves a 
+                            success rate of 70.9%, compared to DexPilot (55.0%), Hybrid (58.3%), and GeoRT (33.3%). These results highlight the effectiveness of SBR in real-world teleoperation scenarios.
+                        </p>
+                        <img src="./static/images/results_plot-task-success-rate.svg" style="display: block; margin: 0 auto; width: 85%;">
                     </div>
-                    <!--/ Animation. -->
+                    <br />
+                    <!--/ Real-World Experiments: Success Rate -->
 
-                    <!-- Re-rendering. -->
-                    <h3 class="title is-4">Pick and Place with mimic Hand + Franka Gripper</h3>
-
-                    <div class="columns is-centered">
-
-                        <!-- Visual Effects. -->
-                        <div class="column">
-                            <div class="content">
-                                <h4 class="title is-4">Rollouts</h4>
-                                <p>
-                                    The policies were trained with 250 demonstrations for
-                                    each embodiment, respectively. The cross-embodiment policy was trained on all 500
-                                    episodes. As observations, we use an external
-                                    camera and the arm pose. Furthermore, for the mimic hand, we use a wrist camera,
-                                    which is replaced by zero-padding for the Franka gripper.
-                                </p>
-                                <video id="dollyzoom" class="mt-3" autoplay controls muted loop playsinline
-                                    height="100%">
-                                    <source src="./static/videos/mimic_franka_rollouts_only.mp4" type="video/mp4">
-                                </video>
-                            </div>
-                        </div>
-                        <!--/ Visual Effects. -->
-
-                        <!-- Matting. -->
-                        <div class="column">
-                            <h4 class="title is-4">Success rates</h4>
-                            <div class="columns is-centered">
-                                <div class="column content">
-                                    <p>
-                                        For the mimic hand, the cross-embodiment policy outperforms single-embodiment
-                                        baselines by 13%. For the Franka gripper, the performance decreases with the
-                                        cotrained
-                                        policy - we attribute this to the asymmetric observations. This observation is
-                                        consistent with prior work cotraining on data with missing camera views.
-                                    </p>
-                                    <img src="./static/images/success_rates_mimic_franka.svg">
-
-                                </div>
-
-                            </div>
-                        </div>
+                    <!-- Real-World Experiments: Completion Time -->
+                    <h3 class="title is-4">Completion Time</h3>
+                    <div class="content has-text-justified">
+                        <p>
+                            Compared to the completion times of DexPilot (23.3s) and Hybrid (21.6s), SBR has a higher overall completion time of 29.7s. 
+                            However, it is still faster than GeoRT (33.3s). This can be attributed to the differences in how operators perform the tasks, 
+                            with some operators aiming to perform the task faster than others. Additionally, from the chart, we can also see that this is 
+                            attributed to Task B, where operators can continue to perform the task given that they did not drop the cube from the palm.
+                        </p>
+                        <img src="./static/images/results_plot-task-completion-time.svg" style="display: block; margin: 0 auto; width: 85%;">
                     </div>
-                    <!--/ Animation. -->
+                    <br />
+                    <!--/ Real-World Experiments: Completion Time -->
 
-                    <h3 class="title is-4">Block Stacking with mimic Hand + Franka Gripper</h3>
-
-                                        <div class="columns is-centered">
-
-                                            <!-- Visual Effects. -->
-                                            <div class="column">
-                                                <div class="content">
-                                                    <h4 class="title is-4">Rollouts</h4>
-                                                    <p>
-                                                        This task contains 3 subtasks: picking up the first block, alignment and stacking with the second block and placing both in the box. The policies were trained with 200 demonstrations for
-                                                        each embodiment, respectively. The cross-embodiment policy was trained on all 400
-                                                        episodes. As observations, we only use an external
-                                                        camera and the arm pose.
-                                                    </p>
-                                                    <video id="dollyzoom" class="mt-3" autoplay controls muted loop playsinline
-                                                        height="100%">
-                                                        <source src="./static/videos/mimic_franka_block_stacking_rollouts_only.mp4" type="video/mp4">
-                                                    </video>
-                                                </div>
-                                            </div>
-                                            <!--/ Visual Effects. -->
-
-                                            <!-- Matting. -->
-                                            <div class="column">
-                                                <h4 class="title is-4">Success rates</h4>
-                                                <div class="columns is-centered">
-                                                    <div class="column content">
-                                                        <p>
-                                                            For coarse manipulation skills, we see a significant improvement for the cross-embodied policy for both embodiments. For fine-grained manipulation, success rates for the mimic hand
-                                                            do not change much, likely due to self-occlusion in the workspace camera view. For the Franka gripper, the success rates are drastically improved for the cross-embodied policy.
-                                                        </p>
-                                                        <img src="./static/images/success_rates_mimic_franka_block_stacking.svg">
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
+                    <!-- Real-World Experiments: Overall Workload (NASA TLX) -->
+                    <h3 class="title is-4">Overall Workload (NASA TLX)</h3>
+                    <div class="content has-text-justified">
+                        <p>
+                            SBR achieves the lowest NASA-TLX workload score of 36.4 out of 100. This indicates that the workload is lower 
+                            compared to the other methods, which have higher scores: DexPilot (44.0), Hybrid (38.4), and GeoRT (56.4). This 
+                            highlights the usability and intuitiveness of SBR. 
+                        </p>
+                        <img src="./static/images/results_plot-nasa-tlx-results_combined.svg" style="display: block; margin: 0 auto; width: 100%;">
+                    </div>
+                    <br />
+                    <!--/ Real-World Experiments: Overall Workload (NASA  -->
                 </div>
+            </div>
+            <!--/ Animation. -->
     </section>
-
+    <!-- Results -->
 
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
             <h2 class="title">BibTeX</h2>
-<pre><code>@article{bauer2025lad,
-  author    = {Erik Bauer and Elvis Nava and Robert K. Katzschmann},
-  title     = {Latent Action Diffusion for Cross-Embodiment Manipulation},
-  journal   = {2026 IEEE International Conference on Robotics and Automation (ICRA)},
+<pre><code>@misc{Malate2026_SmoothOperator,
+  author    = {Robert Jomar Malate and Erik Bauer and Norica Bacuieti and Stefanos Charalambous and Elvis Nava and Robert K. Katzschmann and Benedek Forrai},
+  title     = {Smooth Operator: A Real-Time Sampling-Based Algorithm for Kinematic Hand Retargeting},
   year      = {2026},
 }</code></pre>
         </div>
