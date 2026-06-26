@@ -305,9 +305,9 @@
                     <h3 class="title is-4">Overall Workload (NASA TLX)</h3>
                     <div class="content has-text-justified">
                         <p>
-                            SBR achieves the lowest NASA-TLX workload score of 36.4 out of 100. This indicates that the workload is lower 
-                            compared to the other methods, which have higher scores: DexPilot (44.0), Hybrid (38.4), and GeoRT (56.4). This 
-                            highlights the usability and intuitiveness of SBR. 
+                            SBR achieves the lowest NASA Task Load Index (NASA-TLX) workload score of 36.4 out of 100. This indicates that 
+                            the workload is lower compared to the other methods, which have higher scores: DexPilot (44.0), Hybrid (38.4), 
+                            and GeoRT (56.4). This highlights the usability and intuitiveness of SBR. 
                         </p>
                         <img src="./static/images/results_plot-nasa-tlx-results_combined.svg" style="display: block; margin: 0 auto; width: 100%;">
                     </div>
@@ -318,6 +318,45 @@
             <!--/ Animation. -->
     </section>
     <!-- Results -->
+
+    <!-- Related Works -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Related Works</h2>
+                        <div class="content has-text-justified">
+                            <p>
+                                The Kabsch-Umeyama algorithm is central to how we were able to control different robot hands with different operators without
+                                needing extensive fine-tuning. To better understand it, we recommend these blog posts by
+                                <a href="https://hunterheidenreich.com/posts/kabsch-algorithm/" target="_blank">Hunter Heidenreich</a> and
+                                <a href="https://zpl.fi/aligning-point-patterns-with-kabsch-umeyama-algorithm/" target="_blank">Tuomas Siipola</a>.
+                            </p>
+                            <p>
+                                SBR is built upon the rich literature of sampling-based methods for controls.
+                                <a href="https://acdslab.github.io/mppi-generic-website/docs/mppi.html" target="_blank">Model Predictive Path Integral (MPPI)</a> is one of the
+                                foundational works in this area.
+                                <a href="https://arxiv.org/abs/2203.16633" target="_blank">Model Predictive Optimized Path Integral (MPOPI)</a> improves
+                                upon MPPI's performance by using AIS strategies. For the AIS strategy, we took inspiration from the
+                                <a href="https://arxiv.org/abs/2008.06389" target="_blank">Improved Cross-Entropy Method (iCEM)</a>.
+                            </p>
+
+                            <p>
+                                Because the operators' adapt to the task, we used a Balanced Latin Square design to control for ordering bias. For more information, we recommend this blog post by
+                                <a href="https://damienmasson.com/tools/latin_square/" target="_blank">Damien Masson</a>.
+                            </p>
+
+                            <p>
+                                The NASA Task Load Index (NASA-TLX) is a widely used tool for assessing perceived workload. It has been used in various domains, including aviation, healthcare, and 
+                                human-computer interaction. For more information, we recommend looking at the official
+                                <a href="https://www.nasa.gov/human-systems-integration-division/nasa-task-load-index-tlx/" target="_blank">NASA-TLX</a> website.
+                            </p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Related Works -->
 
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
